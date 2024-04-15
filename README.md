@@ -1,7 +1,7 @@
 # leetcode
 
 <div style="font-size: 20px; color: rgb(0, 113, 133);">
-	<a class="link" style="text-decoration: none;" href="https://leetcode.com/niboukha/" target="_blank">
+	<a class="link" href="https://leetcode.com/niboukha/" target="_blank" style="text-decoration: none;">
 	LeetCode
 </a>
 
