@@ -25,7 +25,6 @@ public:
                 lastName++;
             if (lastName == name.size() or name[firstName] != name[lastName])
             {
-                // cout << name[lastName] << "\n";
                 if (len < lastName - firstName or typed[lastType] != name[lastName])
                     return false;
                 firstName = lastName;
