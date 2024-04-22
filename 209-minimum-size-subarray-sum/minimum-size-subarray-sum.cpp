@@ -12,18 +12,15 @@ public:
             if (sum < target)
             {
                 sum += nums[right];
-                cout <<"sum-> "<< sum << " " << nums[right] << "\n";
                 right++;
             }
             else if (sum >= target)
             {
                 len = min(len, right - left);
                 sum -= nums[left];
-cout << "len -> "<<len<<" "<<nums[left]<<" "<<nums[right]<<" "<<sum<<"\n";
                 left++;
             }
         }
-cout << "len -> "<<len<<" "<<nums[left]<<" "<<sum<<"\n";
         while (left < nums.size())
         {
             if (sum >= target)
