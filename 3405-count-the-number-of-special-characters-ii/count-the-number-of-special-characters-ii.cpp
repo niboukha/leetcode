@@ -3,7 +3,7 @@ public:
     int numberOfSpecialChars(string word)
     {
         vector<pair<int, int> > hash(26, std::make_pair(0, 0));
-        int ans = 0;
+        int                     ans = 0;
 
         for (size_t i = 0; i < word.length(); i++)
         {
@@ -19,7 +19,6 @@ public:
 
         for (size_t i = 0; i < hash.size(); i++)
         {
-            cout << hash[i].first << " " << hash[i].second <<"\n";
             if (hash[i].first > 0 and hash[i].second > 0)
                 ans++;
         }
