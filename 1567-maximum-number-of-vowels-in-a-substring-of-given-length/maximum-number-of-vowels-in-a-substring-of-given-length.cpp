@@ -25,7 +25,6 @@ class Solution
         int maxVowels(string s, int k)
         {
             vector<bool> is_vowel(127, 0);
-            
             int ans            = 0;
             int numberOfVowels = 0;
 
@@ -43,10 +42,7 @@ class Solution
             {
                 if (i + k < s.length())
                 {
-                    if (is_vowel[s[i]])
-                        numberOfVowels--;
-                    if (is_vowel[s[i + k]])
-                        numberOfVowels++;
+                    numberOfVowels = numberOfVowels - is_vowel[s[i]] + is_vowel[s[i + k]];
                     ans = max(ans, numberOfVowels);
                 }
             }
