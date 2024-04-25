@@ -16,13 +16,10 @@ class Solution{
             }
             ans = max(ans, numberOfVowels);
 
-            for(int i = 0; i < s.length(); i++)
+            for(int i = k; i < s.length(); i++)
             {
-                if (i + k < s.length())
-                {
-                    numberOfVowels = numberOfVowels - is_vowel[s[i]] + is_vowel[s[i + k]];
+                    numberOfVowels = numberOfVowels - is_vowel[s[i - k]] + is_vowel[s[i]];
                     ans = max(ans, numberOfVowels);
-                }
             }
             return ans;
         }
