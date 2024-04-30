@@ -10,23 +10,16 @@ public:
         while (right < s.length())
         {
             if (s[left] + cmt == s[right])
-            {
-                // cout<<s[left + cmt]<<" "<<s[right]<< " " << cmt << "\n";
-                right++;
-                cmt++;
-            }
+                right++, cmt++;
             else
             {
                 ans = max(ans, cmt);
-                // cout << ans <<" " <<  cmt <<" "<< right<<"\n";
                 cmt = 0;
-                left++;
+                left = right;
             }
         }
         if (left < right)
-        {
             ans = max(ans, cmt);
-        }
-            return ans;
+        return ans;
     }
 };
