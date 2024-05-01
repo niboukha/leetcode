@@ -12,23 +12,17 @@ public:
             if (hash[s[right]] == 0)
             {
                 hash[s[right]] += 1;
-                // cout<<hash[s[right]]<<" "<<s[right]<<" "<<right<<"\n";
                 right++;
             }
             else
             {
                 ans = max(ans, right - left);
-                // cout << ans << " " << right << "-" << left << "\n";
-                hash.assign(128, 0);
+                hash[s[left]] -= 1;
                 left++;
-                right = left;
             }
         }
         if (left < right)
-        {
-            // cout << ans << "\n";
             ans = max(ans, right - left);
-        }
         return ans;
     }
 };
