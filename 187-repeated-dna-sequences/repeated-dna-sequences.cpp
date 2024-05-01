@@ -8,7 +8,6 @@ public:
 
         for(int i = 0; i < 10; i++)
             str += s[i];
-
         hash[str] += 1;
         for(int i = 10; i < s.size(); i++)
         {
