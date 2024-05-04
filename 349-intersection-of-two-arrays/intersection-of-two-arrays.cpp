@@ -10,14 +10,12 @@ public:
             hash1[nums1[i]] = 1;
         for(int i = 0; i < nums2.size(); i++)
         {
-            if (hash1[nums2[i]] == 1)
+            if (hash1[nums2[i]] == 1 and hash2[nums2[i]] == 0)
+            {
                 hash2[nums2[i]] = 1;
-        }
-        for(map<int, int>::iterator i = hash2.begin(); i != hash2.end(); i++)
-        {
-            if (i->second == 1)
-                ans.push_back(i->first);
-        }      
+                ans.push_back(nums2[i]);
+            }
+        }  
         return ans;
     }
 };
