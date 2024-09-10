@@ -5,6 +5,7 @@ public:
         map<int, int> hash;
         vector<int> res;
         int m = 0;
+        
         for (int i = 0; i < nums.size(); i++)
         {
             hash[nums[i]] += 1;
