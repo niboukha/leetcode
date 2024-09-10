@@ -9,10 +9,12 @@ public:
 
         for (int i = 0; i < paragraph.size(); i++)
         {
-            if (paragraph[i] != ' ' and paragraph[i] != '!' and
+            if ((paragraph[i] != ' ' and paragraph[i] != '!' and
                 paragraph[i] != '?' and paragraph[i] != '\'' and
-                paragraph[i] != ',' and paragraph[i] != ';' and paragraph[i] != '.')
-                    s += tolower(paragraph[i]);
+                paragraph[i] != ',' and paragraph[i] != ';' and paragraph[i] != '.'))
+            {
+                s += tolower(paragraph[i]);
+            }
             else if (!s.empty())
             {
                 auto it = find(banned.begin(), banned.end(), s);
@@ -27,18 +29,19 @@ public:
                 }
                 s.clear();
             }
-        }
-        if (!s.empty())
-        {
-            auto it = find(banned.begin(), banned.end(), s);
-            if ( it == banned.end())
+            if(!s.empty() and i == paragraph.size() - 1)
             {
-                hash[s] += 1;
-                if (len <= hash[s])
+                 auto it = find(banned.begin(), banned.end(), s);
+                if (it == banned.end())
                 {
-                    res = s;
-                    len = max(len, hash[s]);
+                    hash[s] += 1;
+                    if (len <= hash[s])
+                    {
+                        res = s;
+                        len = max(len, hash[s]);
+                    }
                 }
+                s.clear();
             }
         }
         return res;
