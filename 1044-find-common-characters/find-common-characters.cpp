@@ -27,31 +27,22 @@ public:
                 {
                     m = min(m, it->second[i]);
                     exit += it->second[i];
-                    cout << "hna ----> ";
                 }
                 else
                 {
                     exit = 0;
                     break;
                 }
-                cout << it->first << "-" << it->second[i] << "-" << a;
-                cout << "\t";
             }
-            cout << exit << " " << string(1, i + 'a') << "\n";
             if (exit != 0)
             {
-            //     int k = exit / words.size();
                 while (m > 0)
                 {
                     res.push_back(string(1, i + 'a'));
                     m--;
                 }
             }
-            // else if (exit >= words.size())
-            //         res.push_back(string(1, i + 'a'));
             exit = 0;
-            // m = INT_MAX;
-            cout << "\n";
         }
 
         return res;
