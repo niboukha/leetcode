@@ -4,6 +4,8 @@ public:
     {
         map<string, vector<int>> hash;
         vector<string> res;
+        int a = 0;
+        int exit = 0;
 
         for (int i = 0; i < words.size(); i++)
         {
@@ -14,12 +16,11 @@ public:
             }
         }
 
-        int a = 0;
-        int exit = 0;
         for (int i = 0; i < 26; i++)
         {
             int m = INT_MAX;
             map<string, vector<int>>::iterator it = hash.begin();
+
             a = it->second[i];
             for (; it != hash.end(); it++)
             {
