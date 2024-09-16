@@ -11,23 +11,10 @@ public:
                                     {'M', 1000}};
         
         int res = 0;
-        for (int i = s.size() - 1; i >= 0; i--)
+        for (int i = 0; i < s.size(); i++)
         {
-            if (i - 1 >= 0 and (s[i] == 'V' or s[i] == 'X') and s[i - 1] == 'I')
-            {
-                res += hash[s[i]] - 1;
-                i--;
-            }
-            else if (i - 1 >= 0 and (s[i] == 'L' or s[i] == 'C') and s[i - 1] == 'X')
-            {
-                res += hash[s[i]] - 10;
-                i--;
-            }
-            else if (i - 1 >= 0 and (s[i] == 'M' or s[i] == 'D') and s[i - 1] == 'C')
-            {
-                res += hash[s[i]] - 100;
-                i--;
-            }
+            if (hash[s[i]] < hash[s[i + 1]])
+                res -= hash[s[i]];
             else
                 res += hash[s[i]];
         }
