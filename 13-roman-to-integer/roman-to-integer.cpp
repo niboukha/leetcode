@@ -29,9 +29,7 @@ public:
                 i--;
             }
             else
-            {
                 res += hash[s[i]];
-            }
         }
         return res;
     }
