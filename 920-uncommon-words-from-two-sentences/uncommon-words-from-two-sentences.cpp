@@ -36,7 +36,7 @@ public:
         for (auto it1 = hash1.begin(); it1 != hash1.end(); it1++)
         {
             auto f = hash2.find(it1->first);
-            cout << it1->second << "\n";
+            // cout << it1->second << "\n";
             if (f == hash2.end())
             {
                 if (it1->second == 1)
@@ -46,7 +46,7 @@ public:
         for (auto it2 = hash2.begin(); it2 != hash2.end(); it2++)
         {
             auto f = hash1.find(it2->first); 
-            cout << it2->second << "\n";
+            // cout << it2->second << "\n";
 
             if (f == hash1.end())
             {
