@@ -33,18 +33,10 @@ public:
             {
                 if (i != 0)
                 {
-                    int value = i + k - 1;
+                    // int value = i + k - 1;
                     int mod = code.size();
 
-                    // Manually adjust to get the desired positive remainder
-                    int result = (value % mod + mod) % mod; // This gives you the non-negative result.
-                    // cout << result << "\n";
-                    // if (result == 0) {
-                    //     result = mod - 2; // Adjusting to get 3 when the result is 0
-                    // } else {
-                    //     result = (result - 1) % mod; // Getting 3 when the remainder is positive
-                    // }
-                    cout << res[i - 1] << " " << (i - 1) % code.size() << " " << (i + k - 1) << " " << result << "\n";
+                    int result = ((i + k - 1) % mod + mod) % mod;
                     res[i] = res[i - 1] + code[(i - 1) % code.size()] - code[result];
                 }
                 else
