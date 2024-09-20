@@ -7,7 +7,6 @@ public:
 
         for (int i = 0; i < s.size(); i++)
         {
-            // cout << i << " " << i + k - 1<< "\n";
             if (i + k - 1 < s.size() and check(s.substr(i, k)) == true)
                 res += 1;
         }
@@ -17,7 +16,6 @@ public:
 
     bool check(string s)
     {
-        // cout << s << "\n";
         vector<int> hash(26, 0);
 
         for (int i = 0; i < s.size(); i++)
