@@ -15,7 +15,6 @@ public:
     int countwhite(string s)
     {
         int count = 0;
-        cout << s << "\n";
         for (int i = 0; i < s.size(); i++)
         {
             if (s[i] == 'W')
