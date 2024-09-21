@@ -6,8 +6,9 @@ public:
 
         for (int i = 0; i < blocks.size(); i++)
         {
-            if (blocks.substr(i, k).size() == k)
-                res = min(res, countwhite(blocks.substr(i, k)));
+            string s = blocks.substr(i, k);
+            if (s.size() == k)
+                res = min(res, countwhite(s));
         }
         return res;
     }
