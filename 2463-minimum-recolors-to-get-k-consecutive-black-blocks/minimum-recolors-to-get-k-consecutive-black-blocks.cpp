@@ -3,24 +3,29 @@ public:
     int minimumRecolors(string blocks, int k)
     {
         int res = INT_MAX;
-
-        for (int i = 0; i < blocks.size(); i++)
-        {
-            string s = blocks.substr(i, k);
-            if (s.size() == k)
-                res = min(res, countwhite(s));
-        }
-        return res;
-    }
-
-    int countwhite(string s)
-    {
         int count = 0;
-        for (int i = 0; i < s.size(); i++)
+        int i = 0;
+        while (i < k)
         {
-            if (s[i] == 'W')
+            if (blocks[i] == 'W')
                 count++;
+            i++;
         }
-        return count;
+        res = min(res, count);
+
+        for (int i = k; i < blocks.size(); i++)
+        {
+            if (blocks[i - k] == 'W' and blocks[i] == 'B')
+                count--;
+            if (blocks[i - k] == 'B' and blocks[i] == 'W')
+                count++;
+            res = min(res, count);
+        }
+
+        
+
+
+
+        return res;
     }
 };
