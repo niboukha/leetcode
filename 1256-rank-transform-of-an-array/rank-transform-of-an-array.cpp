@@ -2,7 +2,6 @@ class Solution {
 public:
     vector<int> arrayRankTransform(vector<int>& arr)
     {
-        vector<int> res;
         std::map<int, std::set<int>> hash;
 
         for (int i = 0; i < arr.size(); i++)
