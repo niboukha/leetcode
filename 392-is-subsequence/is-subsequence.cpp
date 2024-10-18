@@ -9,8 +9,8 @@ public:
                 i++;
             j++;
         }
-        if (i == s.size())
-            return true;
-        return false;        
+        // if ()
+            return (i == s.size());
+        // return false;        
     }
 };
