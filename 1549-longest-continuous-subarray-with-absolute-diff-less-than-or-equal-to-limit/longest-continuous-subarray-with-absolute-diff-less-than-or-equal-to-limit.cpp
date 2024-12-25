@@ -9,25 +9,16 @@ public:
         int maX, miN;
         while(left < nums.size())
         {
-            cout << left << " " << right << "\n";
             if (right < nums.size())
             {
                 set.insert(nums[right]);
                 miN = *set.begin();
                 maX = *std::prev(set.end());
-            //     std::cout << nums[right] << " " << nums[left] << "\n";
-            //     std::cout << miN  << "+" << maX << "\n";
             }
             else
                 break;
             if (abs(maX - miN) <= limit)
-            {
-                if (right < nums.size())
-                    right++;
-                // else
-                //     left++;
-                res = max(res, right - left);
-            }
+                res = max(res, ++right - left);
             else
             {
                 auto it = set.find(nums[left]);
@@ -35,9 +26,7 @@ public:
                     set.erase(it);
                 }
                 left++;
-                if (right < nums.size())
-                    right++;
-
+                right++;
             }
         }
         return res;
