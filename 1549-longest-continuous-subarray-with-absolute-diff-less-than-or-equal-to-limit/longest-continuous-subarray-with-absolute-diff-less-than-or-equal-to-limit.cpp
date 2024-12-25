@@ -9,15 +9,8 @@ public:
         int maX, miN;
         while(left < nums.size())
         {
-            if (right < nums.size())
-            {
-                set.insert(nums[right]);
-                miN = *set.begin();
-                maX = *std::prev(set.end());
-            }
-            else
-                break;
-            if (abs(maX - miN) <= limit)
+            set.insert(nums[right]);
+            if (abs(*std::prev(set.end()) - *set.begin()) <= limit)
                 res = max(res, ++right - left);
             else
             {
@@ -28,6 +21,8 @@ public:
                 left++;
                 right++;
             }
+            if (right >= nums.size())
+                break;
         }
         return res;
     }
