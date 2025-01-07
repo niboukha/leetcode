@@ -2,26 +2,18 @@ class Solution {
 public:
     int strStr(string haystack, string needle)
     {
-        int res = 0;
         int left = 0;
-        int right = 0;
-        int i = 0;
+        int right = needle.size();
+
         while (left < haystack.size())
         {
-            res = right;
-            while (i < needle.size())
-            {
-                if (haystack[right] != needle[i])
-                    break;
-                else if (i == needle.size() - 1)
-                    return res;
-                right++;
-                i++;
-            }
-            i = 0;
+            if(haystack.substr(left, needle.size()) == needle)
+                return left;
             left++;
-            right = left;
+            if (right < haystack.size())
+                right++;
         }
+
         return -1;
     }
 };
