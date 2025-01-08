@@ -2,32 +2,23 @@ class Solution {
 public:
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n)
     {
-        int right1 = m - 1;
-        int right2 = n - 1;
-        int i = n + m - 1;
+        int i = m - 1;
+        int j = n - 1;
+        int k = n + m - 1;
 
-        while (right2 >= 0 and right1>= 0)
+        while (j >= 0)
         {
-            nums1[i] = max(nums1[right1], nums2[right2]);
-            if (nums1[right1] >= nums2[right2])
+            if ( i >= 0 and nums1[i] > nums2[j])
             {
-                nums1[right1] = 0;
-                right1--;
+                nums1[k] = nums1[i];
+                i--;
             }
             else
             {
-                nums2[right2] = 0;
-                right2--;
+                nums1[k] = nums2[j];
+                j--;
             }    
-            i--;
+            k--;
         }
-        while (i >= 0 and right2 >= 0)
-        {
-            nums1[i] = nums2[right2];
-            right2--;
-            i--;
-        }
-
-
     }
 };
