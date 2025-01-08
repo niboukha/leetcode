@@ -6,13 +6,13 @@ public:
         int right2 = n - 1;
         int i = n + m - 1;
 
-        if (n == 1 and m == 0)
-        {
-            nums1[0] = max(nums1[0], nums2[0]);
-            return;
-        }
-        else if (n == 0)
-            return;
+        // if (n == 1 and m == 0)
+        // {
+        //     nums1[0] = max(nums1[0], nums2[0]);
+        //     return;
+        // }
+        // else if (n == 0)
+        //     return;
 
         while (right2 >= 0 and right1>= 0)
         {
@@ -21,7 +21,7 @@ public:
             nums1[i] = max(nums1[right1], nums2[right2]);
             if (nums1[right1] >= nums2[right2])
             {
-                cout << right1 << "\n";
+                // cout << right1 << "\n";
                 nums1[right1] = 0;
                 right1--;
             }
