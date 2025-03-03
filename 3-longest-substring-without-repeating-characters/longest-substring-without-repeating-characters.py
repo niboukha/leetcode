@@ -6,7 +6,6 @@ class Solution:
 
         res = 0
         while r < len(s):
-            print(r)
             m[s[r]] += 1
 
             while m[s[r]] > 1:
