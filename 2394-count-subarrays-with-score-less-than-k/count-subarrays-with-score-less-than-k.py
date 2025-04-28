@@ -4,12 +4,15 @@ class Solution:
         res = 0
         sm = 0
         l = r = 0
+        score = 0
         while r < len(nums):
 
             sm += nums[r]
-            while sm * (r - l + 1) >= k:
+            score = sm * (r - l + 1)
+            while score >= k:
                 sm -= nums[l]
                 l += 1
+                score = sm * (r - l + 1)
             res += r - l + 1
             r += 1
         
