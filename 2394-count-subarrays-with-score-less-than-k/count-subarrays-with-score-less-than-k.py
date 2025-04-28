@@ -2,16 +2,15 @@ class Solution:
     def countSubarrays(self, nums: List[int], k: int) -> int:
 
         res = 0
-        tar = 0
-        left = right = 0
-        while left < len(nums):
-            
-            if right < len(nums) and k > ((tar + nums[right]) * (right - left + 1)):
-                tar += nums[right]
-                right += 1
-            else:
-                res += (right - left)
-                tar -= nums[left]
-                left += 1
+        sm = 0
+        l = r = 0
+        while r < len(nums):
+
+            sm += nums[r]
+            while sm * (r - l + 1) >= k:
+                sm -= nums[l]
+                l += 1
+            res += r - l + 1
+            r += 1
         
         return res
