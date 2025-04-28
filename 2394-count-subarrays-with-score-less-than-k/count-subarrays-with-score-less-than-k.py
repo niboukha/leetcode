@@ -5,6 +5,7 @@ class Solution:
         tar = 0
         left = right = 0
         while left < len(nums):
+            
             if right < len(nums) and k > ((tar + nums[right]) * (right - left + 1)):
                 tar += nums[right]
                 right += 1
