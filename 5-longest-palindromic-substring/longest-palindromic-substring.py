@@ -13,13 +13,10 @@ class Solution:
         
         ans = ""
         i = l = r = 0
-        
         while i < len(s):
-
             odd = self.findSubPalindrome(s, i, i)
             even = self.findSubPalindrome(s, i, i + 1)
             ans = max(odd, even, ans, key=len)
-
             i += 1
 
         return ans
