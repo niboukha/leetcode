@@ -4,8 +4,6 @@ class Solution:
 
         i = 0
         for c in sorted(count.keys()):
-            # print(c , count[c], nums[i: i + count[c]])
             nums[i:i + count[c]] = [c] * count[c]
             i += count[c]
-        # print(nums)
         
