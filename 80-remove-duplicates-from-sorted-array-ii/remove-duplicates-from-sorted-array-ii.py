@@ -4,12 +4,8 @@ class Solution:
         k = 0
 
         for c in sorted(count.keys()):
-            m = min(count[c], 2)
+            m = 2 if count[c] > 2 else count[c]
             nums[k: k + count[c]] = [c] * m
             k += m
 
         return k
-                
-
-
-
