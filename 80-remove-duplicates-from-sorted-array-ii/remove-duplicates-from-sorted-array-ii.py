@@ -4,9 +4,9 @@ class Solution:
         k = 0
 
         for c in sorted(count.keys()):
-            
-            nums[k: k + count[c]] = [c] * min(count[c], 2)
-            k += min(count[c], 2)
+            m = min(count[c], 2)
+            nums[k: k + count[c]] = [c] * m
+            k += m
 
         return k
                 
