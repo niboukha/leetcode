@@ -1,12 +1,9 @@
 class Solution:
     def longestPalindrome(self, words: List[str]) -> int:
-        ans = 0
-        ans1 = 0
         count = Counter(words)
-        arr = []
-        sim = []
+        ans = 0
         m = 0
-        # print(count)
+        
         for word, c in count.most_common():
 
             if word[0] != word[1]:
@@ -14,11 +11,9 @@ class Solution:
             else:
                 if c % 2 != 0:
                     if m == 0:
-                        # print("++", word, c)
                         m = max(m, c)
                         ans += m * 2
                     else:
-                        # print("---", word, c)
                         ans += (c - 1) * 2
                 else:
                     ans += c * 2
