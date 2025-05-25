@@ -3,7 +3,7 @@ class Solution:
         count = Counter(words)
         ans = 0
         m = 0
-        
+
         for word, c in count.most_common():
 
             if word[0] != word[1]:
@@ -17,6 +17,7 @@ class Solution:
                         ans += (c - 1) * 2
                 else:
                     ans += c * 2
+                    
         return ans
 
 # ll ll
