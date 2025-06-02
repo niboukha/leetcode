@@ -1,31 +1,17 @@
 class Solution:
     def candy(self, ratings: List[int]) -> int:
-        arr = [1] * len(ratings)
+        n = len(ratings)
 
-        l = 0
-        r = 1
+        arr = [1] * n
 
-        while r < len(ratings):
-            # print(arr[r], arr[l])
-            if ratings[r] > ratings[l]:
-                arr[r] = arr[l] + 1
-            r += 1
-            l += 1
-        # print(arr)
+        for i in range(1, n):
+            if ratings[i] > ratings[i - 1]:
+                arr[i] = arr[i - 1] + 1
+            
+        for i in range(n - 1, 0, -1):
+            if ratings[i - 1] > ratings[i]:
+                arr[i - 1] = max(arr[i] + 1, arr[i - 1])
         
-        r = len(ratings) - 1
-        l = r - 1
-
-        while r > 0:
-            # print(arr)
-            # print(arr[r], arr[l])
-            if ratings[l] > ratings[r] and arr[l] <= arr[r]:
-                arr[l] = arr[r] + 1
-            r -= 1
-            l -= 1
-
-        # print(arr)
-
         return sum(arr)
 
 # l r 
