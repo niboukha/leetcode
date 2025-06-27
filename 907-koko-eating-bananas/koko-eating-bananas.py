@@ -3,23 +3,18 @@ class Solution:
         
         l = 1
         r = max(piles)
-        k = math.ceil(max(piles) / 2)
-        speed = 0
-        res = float('inf')
+        res = r
 
         while l <= r:
 
-            speed = 0
-            for p in piles:
-                speed += math.ceil(p / k)
+            k = (r + l) // 2
+            speed = sum(ceil(p / k) for p in piles)
 
             if speed <= h:
-                res = min(k, res)
+                res = k
                 r = k - 1
-                k = math.ceil(r / 2)
             else:
                 l = k + 1
-                k = math.ceil((r + l) / 2)
                 
 
         return res
