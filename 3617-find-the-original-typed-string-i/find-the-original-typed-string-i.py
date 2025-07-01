@@ -1,19 +1,10 @@
 class Solution:
     def possibleStringCount(self, word: str) -> int:
         
-        ans = 0
-        i = 0
-        sub = ""
-        while i < len(word):
-            # print(sub, "-",word[i], i, "-", ans)
-            sub += word[i]
-            if sub.count(word[i]) == len(sub):
-                ans += 1
-            else:
-                sub = sub[len(sub) - 1:]
-                # print("sub: ", sub)
-            i += 1
-
+        ans = len(word)
+        for i in range(1, len(word)):
+            if word[i] != word[i - 1]:
+                ans -= 1
         return ans
 
 
