@@ -2,7 +2,8 @@ class Solution:
     def findMin(self, nums: List[int]) -> int:
         l = 0
         r = len(nums) - 1
-        ans = 5000
+        ans = float('inf')
+
         while l <= r:
             mid = (r + l) // 2 
             ans = min(ans, nums[mid])
