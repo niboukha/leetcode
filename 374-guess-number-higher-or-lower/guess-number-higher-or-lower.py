@@ -11,12 +11,10 @@ class Solution:
 
         while l <= r:
             m = (l + r) // 2
-
-            if guess(m) == 0:
+            res = guess(m) 
+            if res == 0:
                 return m
-            if guess(m) == 1:
+            if res == 1:
                 l = m + 1
             else:
                 r = m - 1
-        
-        return -1
