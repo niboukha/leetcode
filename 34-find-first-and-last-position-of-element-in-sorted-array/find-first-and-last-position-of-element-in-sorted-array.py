@@ -6,13 +6,9 @@ class Solution:
         y = -1
         while l <= r:
             m = (l + r) // 2
-            # print(m, target, l)
             if nums[m] <= target:
-                if nums[l] == target:
-                    y = l
                 if nums[m] == target:
                     y = m
-                    # print("-------------")
                 l = m + 1
             else:
                 r = m - 1
@@ -20,10 +16,7 @@ class Solution:
         r = len(nums) - 1
         while l <= r:
             m = (l + r) // 2
-            # print(m, target, r)
             if nums[m] >= target:
-                if nums[r] == target:
-                    x = r
                 if nums[m] == target:
                     x = m
                 r = m - 1
