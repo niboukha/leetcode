@@ -12,6 +12,6 @@ FROM Activity
 LEFT JOIN Init_date ON
     Activity.player_id =  Init_date.player_id
     AND
-    Activity.event_date - Init_date.event_date = 1
+    Activity.event_date =  Init_date.event_date + 1
 
 -- smallest date then check if date (day + 1) exist
