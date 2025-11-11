@@ -32,6 +32,6 @@ WITH
     )
 
 
-SELECT DISTINCT on (product_id) product_id, price
+SELECT DISTINCT ON (product_id) product_id, price
 FROM Union_tables
-order by product_id, change_date ASC
+ORDER BY product_id, change_date ASC
