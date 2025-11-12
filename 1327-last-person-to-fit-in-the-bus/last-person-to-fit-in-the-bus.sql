@@ -16,4 +16,3 @@ WITH
 SELECT person_name
 FROM SumWeight
 WHERE cumulativeWeight = (SELECT MAX(cumulativeWeight) FROM SumWeight)
-
