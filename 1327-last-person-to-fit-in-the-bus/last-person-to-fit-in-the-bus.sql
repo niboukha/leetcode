@@ -9,11 +9,11 @@ WITH
                     SUM(weight) OVER (ORDER BY turn) <= 1000 then SUM(weight) OVER (ORDER BY turn)
                 ELSE NULL
             END
-            AS TotalWeight
+            AS cumulativeWeight
         FROM Queue
     )
 
 SELECT person_name
 FROM SumWeight
-WHERE TotalWeight = (SELECT MAX(TotalWeight) FROM SumWeight)
+WHERE cumulativeWeight = (SELECT MAX(cumulativeWeight) FROM SumWeight)
 
