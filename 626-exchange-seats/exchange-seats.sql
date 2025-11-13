@@ -1,26 +1,21 @@
 -- Write your PostgreSQL query statement below
 
 WITH Cte AS (
-    SELECT *, LEAD(student) OVER (ORDER BY id), LAG(student) OVER (ORDER BY id)
+    SELECT *,
+        COALESCE(LEAD(student) OVER (ORDER BY id), student) as lead,
+        LAG(student) OVER (ORDER BY id)
     FROM Seat
 )
 
-SELECT
-    id,
-    (
-        CASE
-            WHEN lead IS NULL THEN student
-            else lead
-        END
-    ) as student
+SELECT id, lead as student
 FROM Cte
-WHERE id % 2 = 1
+WHERE MOD(id, 2) = 1
 
 UNION
 
 SELECT id, lag as student
 FROM Cte
-WHERE id % 2 = 0
+WHERE MOD(id, 2) = 0
 
 
 -- +----+---------+
