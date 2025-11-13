@@ -1,0 +1,34 @@
+-- Write your PostgreSQL query statement below
+
+WITH Cte AS (
+    SELECT *, LEAD(student) OVER (ORDER BY id), LAG(student) OVER (ORDER BY id)
+    FROM Seat
+)
+
+SELECT
+    id,
+    (
+        CASE
+            WHEN lead IS NULL THEN student
+            else lead
+        END
+    ) as student
+FROM Cte
+WHERE id % 2 = 1
+
+UNION
+
+SELECT id, lag as student
+FROM Cte
+WHERE id % 2 = 0
+
+
+-- +----+---------+
+-- | id | student |
+-- +----+---------+
+-- | 1  | Abbot   | Doris
+-- | 2  | Doris   | Abbot
+-- | 3  | Emerson | Green
+-- | 4  | Green   | Emerson
+-- | 5  | Jeames  |
+-- +----+---------+
