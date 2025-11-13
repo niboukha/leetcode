@@ -6,16 +6,24 @@ WITH Cte AS (
         LAG(student) OVER (ORDER BY id)
     FROM Seat
 )
-
-SELECT id, lead as student
+SELECT id, (
+    CASE
+        WHEN MOD(id, 2) = 1 THEN lead
+        ELSE lag
+    END
+) AS student
 FROM Cte
-WHERE MOD(id, 2) = 1
 
-UNION
 
-SELECT id, lag as student
-FROM Cte
-WHERE MOD(id, 2) = 0
+-- SELECT id, lead as student
+-- FROM Cte
+-- WHERE MOD(id, 2) = 1
+
+-- UNION
+
+-- SELECT id, lag as student
+-- FROM Cte
+-- WHERE MOD(id, 2) = 0
 
 
 -- +----+---------+
