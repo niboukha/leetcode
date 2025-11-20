@@ -1,25 +1,20 @@
 # Write your MySQL query statement below
 WITH
     counter AS (
-        SELECT requester_id AS id, COUNT(accepter_id) AS num
+        SELECT requester_id AS id
         FROM RequestAccepted
-        GROUP BY requester_id
 
         UNION ALL
 
-        SELECT accepter_id AS id, COUNT(requester_id) AS num
+        SELECT accepter_id AS id
         FROM RequestAccepted
-        GROUP BY accepter_id
-    ),
-    getSum AS (
-        SELECT id, SUM(num) AS num
-        FROM counter
-        GROUP BY id
     )
 
-SELECT *
-FROM getSum
-WHERE num = (SELECT MAX(num) FROM getSum);
+SELECT id, COUNT(id) as num
+FROM counter
+GROUP BY id
+ORDER BY num DESC
+LIMIT 1
 
 -- 1 2
 -- 1 3
