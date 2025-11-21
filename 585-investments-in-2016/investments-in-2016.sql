@@ -1,29 +1,16 @@
 -- Write your PostgreSQL query statement below
 
 
-WITH
-    UniqueLonLat AS (
-        SELECT lat, lon
-        FROM Insurance
-        GROUP BY lat, lon
-        HAVING COUNT(lat) = 1 OR COUNT(lon) = 1
-    ),
-    UniqueTiv2015 AS (
-        SELECT tiv_2015
-        FROM Insurance
-        GROUP BY tiv_2015
-        HAVING COUNT(tiv_2015) > 1
-    ),
-    JoinUniqueTiv AS (
-        SELECT *
-        FROM Insurance
-        RIGHT JOIN UniqueTiv2015 USING(tiv_2015)
-    )
+WITH FilterInfo AS (
+    SELECT tiv_2016, 
+        COUNT(*) OVER (PARTITION BY tiv_2015) AS tiv_2015,
+        COUNT(*) OVER (PARTITION BY lat, lon) AS pairs
+    FROM Insurance
+)
 
-SELECT ROUND(SUM(JoinUniqueTiv.tiv_2016)::NUMERIC, 2) AS tiv_2016
-FROM JoinUniqueTiv
-RIGHT JOIN UniqueLonLat ON
-    UniqueLonLat.lat = JoinUniqueTiv.lat AND UniqueLonLat.lon = JoinUniqueTiv.lon
+SELECT ROUND(SUM(FilterInfo.tiv_2016)::NUMERIC, 2) AS tiv_2016
+FROM FilterInfo
+WHERE tiv_2015 > 1 AND pairs = 1
 
 
 
