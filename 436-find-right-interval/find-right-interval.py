@@ -1,6 +1,8 @@
 class Solution:
     def findRightInterval(self, intervals: List[List[int]]) -> List[int]:
+        
         n = len(intervals)
+
         s_i = []
         for idx, (start, end) in enumerate(intervals):
             s_i.append([start, idx])
@@ -21,6 +23,7 @@ class Solution:
         ans = [-1] * n
         for idx, (start, end) in enumerate(intervals):
             ans[idx] = binary_search(end)
+
         return ans
 
 
