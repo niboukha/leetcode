@@ -5,19 +5,22 @@ class Solution:
         for idx, (start, end) in enumerate(intervals):
             s_i.append([start, idx])
         s_i.sort()
-        ans = [-1] * n
-        for idx, (start, end) in enumerate(intervals):
+
+        def binary_search(end):
+            if s_i[n - 1][0] < end: return -1
+
             i, j = 0, n - 1
-            val = 2**1000
             while i <= j:
                 m = (i + j) // 2
                 if end <= s_i[m][0]:
                     j = m - 1
-                    if min(val, s_i[m][0]) != val:
-                        ans[idx] = s_i[m][1]
-                        val = s_i[m][0]
                 else:
                     i = m + 1
+            return s_i[i][1]
+
+        ans = [-1] * n
+        for idx, (start, end) in enumerate(intervals):
+            ans[idx] = binary_search(end)
         return ans
 
 
