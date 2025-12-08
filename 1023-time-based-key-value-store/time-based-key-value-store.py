@@ -4,23 +4,14 @@ class TimeMap:
         self.timeMap = defaultdict(list)
 
     def set(self, key: str, value: str, timestamp: int) -> None:
-        self.timeMap[key].append([value, timestamp])
+        self.timeMap[key].append((timestamp, value))
         
     def get(self, key: str, timestamp: int) -> str:
-        ans = ""
-        pairs = self.timeMap[key]
+        timestamps = self.timeMap[key]
+        prev = bisect_right(timestamps, timestamp, key=lambda p: p[0]) - 1
 
-        left, right = 0, len(pairs) - 1
-        while left <= right:
-            m = (left + right) // 2
-            if pairs[m][1] <= timestamp:
-                ans = pairs[m][0]
-            if pairs[m][1] > timestamp:
-                right = m - 1
-            else:
-                left = m + 1
-        
-        return ans
+        if prev == -1: return ""
+        return timestamps[prev][1]
 
 
 # Your TimeMap object will be instantiated and called as such:
