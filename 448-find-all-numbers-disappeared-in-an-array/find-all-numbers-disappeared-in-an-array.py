@@ -4,5 +4,4 @@ class Solution:
         count = [0] * len(nums)
         for i, n in enumerate(nums):
             count[nums[i] - 1] += 1
-        print(count)
         return [i + 1 for i, c in enumerate(count) if c == 0]
