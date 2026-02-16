@@ -15,7 +15,7 @@ class RandomizedSet:
     def remove(self, val: int) -> bool:
         if val not in self.elements:
             return False
-            
+
         idx = self.elementsIdx[val]
         
         self.elementsIdx[self.elements[-1]] = idx
