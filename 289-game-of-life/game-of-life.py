@@ -1,8 +1,11 @@
 class Solution:
     def gameOfLife(self, board: List[List[int]]) -> None:
         """
-        Modify board in-place using state encoding.
-        
+            Modify board in-place using state encoding:
+            0 -> dead
+            1 -> live
+            2 -> dead -> live
+            3 -> live -> live
         """
         rows, cols = len(board), len(board[0])
 
