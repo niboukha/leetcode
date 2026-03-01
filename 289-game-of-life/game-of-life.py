@@ -1,7 +1,8 @@
 class Solution:
     def gameOfLife(self, board: List[List[int]]) -> None:
         """
-        Do not return anything, modify board in-place instead.
+        Modify board in-place using state encoding.
+        
         """
         rows, cols = len(board), len(board[0])
 
@@ -15,21 +16,19 @@ class Solution:
             count = 0
             for dr, dc in directions:
                 nr, nc = r + dr, c + dc
-
                 if 0 <= nr < rows and 0 <= nc < cols:
-                    # count original live cells (1 or 3)
                     if board[nr][nc] == 1 or board[nr][nc] == 3:
                         count += 1
             return count
         
-        # First pass: apply transitions using encoding
+        # First pass: apply transitions
         for r in range(rows):
             for c in range(cols):
                 live_neighbors = count_neighbors(r, c)
                 if board[r][c] == 1 and live_neighbors in [2,3]:
-                    board[r][c] = 3
+                    board[r][c] = 3  # live -> live
                 elif board[r][c] == 0 and live_neighbors == 3:
-                    board[r][c] = 2
+                    board[r][c] = 2  # dead -> live
                     
         # Second pass: finalize states
         for r in range(rows):
