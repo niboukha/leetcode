@@ -1,11 +1,14 @@
 class Solution:
     def judgeSquareSum(self, c: int) -> bool:
 
-        hash_set = set()
-        for i in range(int(math.isqrt(c)) + 1):
-            hash_set.add(i)
-
-        for a in range(int(math.isqrt(c)) + 1):
-            if math.sqrt(c - a * a) in hash_set:
+        l, r = 0, int(isqrt(c))
+        while l <= r:
+            a, b = l * l, r * r
+            if a + b > c:
+                r -= 1
+            elif a + b < c:
+                l += 1
+            else:
                 return True
+
         return False
